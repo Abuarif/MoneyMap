@@ -23,7 +23,11 @@ export class AddingPage {
 
   save()
   {
-    this.model.save();
+    this.model.save().then(result => {
+      this.model = new Transaction(null,"");
+
+      this.navCtrl.pop();
+    });
   }
 
 }
