@@ -21,7 +21,7 @@ export class MapPage {
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public geolocator : GeolocationService) {}
 
-  ionViewDidLoad() {
+  ionViewDidEnter() {
     //obtener ubicacion del usuario para centrar mapa
     this.geolocator.get().then((result)=>{
       //cargar mapa
