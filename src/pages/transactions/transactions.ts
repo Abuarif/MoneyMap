@@ -33,7 +33,7 @@ export class TransactionsPage {
     Transaction.all()
                .then((resultados) => {
                  this.transactions = resultados;
-                 console.log(this.transactions);
+                 //console.log(this.transactions);
                });
   }
 

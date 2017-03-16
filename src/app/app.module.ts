@@ -7,6 +7,7 @@ import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { TransactionsPage } from '../pages/transactions/transactions';
 import { AddingPage } from '../pages/adding/adding';
+import {GeolocationService} from '../services/geolocation.service';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,6 @@ import { AddingPage } from '../pages/adding/adding';
     TransactionsPage,
     AddingPage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},{provide: GeolocationService, useClass: GeolocationService}]
 })
 export class AppModule {}

@@ -1,5 +1,5 @@
-import Dexie from 'dexie';
-
+//import Dexie from 'dexie';
+import Dexie from '../node_modules/dexie/dist/dexie'
 export class TransactionAppDB extends Dexie{
   transactions: Dexie.Table<ITransaction, number>;
   constructor(){
@@ -47,11 +47,23 @@ export class Transaction implements ITransaction{
       return db.transactions.add(this);
     }
 
+    setCords(coords){
+      this.lat=coords.latitude;
+      this.lng=coords.longitude;
+    }
+
+    cleanCoords(){
+      this.lat=null;
+      this.lng=null;
+    }
+
     static all(){
       //Transaction.all() => todas las transacciones
       //retorna objeto tipo Promise
       return db.transactions.orderBy("id").reverse().toArray();
     }
+
+
 
 }
 
