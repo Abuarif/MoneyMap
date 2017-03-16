@@ -30,6 +30,6 @@
 
 
   <div class="actions">
-    <button ion-button (click)="save()">Agregar</button>
+    <button ion-button (click)="save()" [disabled]="!shouldSend" >Agregar</button>
   </div>
 </ion-content>

@@ -18,6 +18,7 @@ export class AddingPage {
 
   model : Transaction = new Transaction(null,"");
   shouldGeolocate : boolean = true;
+  shouldSend : boolean = true;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public geolocator : GeolocationService) {}
 
@@ -29,18 +30,23 @@ export class AddingPage {
 
   save()
   {
-    this.model.save().then(result => {
-      this.model = new Transaction(null,"");
-      this.navCtrl.pop();
-    });
+    if(this.shouldSend){
+      this.model.save().then(result => {
+        this.model = new Transaction(null,"");
+        this.navCtrl.pop();
+      });
+    }
+
   }
 
   getLocation()
   {
     if(this.shouldGeolocate){
+      this.shouldSend = false;
       this.geolocator.get().then((resultado)=>{
         this.model.setCords(resultado.coords);
         console.log(this.model);
+        this.shouldSend = true;
       }).catch((err)=> console.log(err));
     }else{
       this.model.cleanCoords();
