@@ -1,15 +1,23 @@
 //import Dexie from 'dexie';
 import Dexie from '../node_modules/dexie/dist/dexie'
 export class TransactionAppDB extends Dexie{
+  //nombre tabla->nombreInterfaz, tipo dato del id
   transactions: Dexie.Table<ITransaction, number>;
+  wallets : Dexie.Table<IWallet, number>;
   constructor(){
     super("MoneyMapAppDB");
 
     this.version(1).stores({
       transactions: '++id,amount,lat,lng,title,imageUrl'
     });
+    //cada vez que se haga un cambio se tiene que agregar otra version
+    this.version(2).stores({
+      transactions: '++id,amount,lat,lng,title,imageUrl',
+      wallets: '++id,amount,name'
+    });
 
     this.transactions.mapToClass(Transaction);
+    this.wallets.mapToClass(Wallet);
   }
 }
 
@@ -23,6 +31,29 @@ export interface ITransaction{
   lng:number;
   title:string;
   imageUrl: string;
+}
+
+export interface IWallet{
+  id?: number;
+  amount:number;
+  name:string;
+}
+
+export class Wallet implements IWallet{
+  id?: number;
+  amount:number;
+  name:string;
+
+  constructor(amount:number,name:string,id?:number){
+    this.amount=amount;
+    this.name=name;
+    if(id) this.id=id;
+  }
+
+  save()
+  {
+    return db.wallets.add(this);
+  }
 }
 
 export class Transaction implements ITransaction{
@@ -72,9 +103,6 @@ export class Transaction implements ITransaction{
       //retorna objeto tipo Promise
       return db.transactions.orderBy("id").reverse().toArray();
     }
-
-
-
 }
 
 export let db = new TransactionAppDB();
