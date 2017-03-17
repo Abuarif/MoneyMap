@@ -9,6 +9,7 @@ import { TransactionsPage } from '../pages/transactions/transactions';
 import { AddingPage } from '../pages/adding/adding';
 import { MapPage } from '../pages/map/map';
 import {GeolocationService} from '../services/geolocation.service';
+import {WalletsPage} from '../pages/wallets/wallets';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {GeolocationService} from '../services/geolocation.service';
     TabsPage,
     TransactionsPage,
     AddingPage,
-    MapPage
+    MapPage,
+    WalletsPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -33,7 +35,8 @@ import {GeolocationService} from '../services/geolocation.service';
     TabsPage,
     TransactionsPage,
     AddingPage,
-    MapPage
+    MapPage,
+    WalletsPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},{provide: GeolocationService, useClass: GeolocationService}]
 })
