@@ -28,6 +28,10 @@ export class AddingPage {
     }).catch((err)=> console.log(err));
   }
 
+  getPhoto(){
+    console.log("Tomar una foto");
+  }
+
   save()
   {
     if(this.shouldSend){
