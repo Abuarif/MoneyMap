@@ -43,6 +43,16 @@ export class Transaction implements ITransaction{
     if(id) this.id=id;
       }
 
+    getImage():string{
+      if(this.imageUrl)
+        return this.imageUrl;
+      return "blue";
+    }
+
+    hasLocation():boolean{
+      return !!(this.lat && this.lng);
+    }
+
     save (){
       return db.transactions.add(this);
     }

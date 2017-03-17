@@ -37,13 +37,15 @@ export class MapPage {
     for (let i = 0; i < transactions.length; i++) {
         let transaction=transactions[i];
 
-        alert(transaction.imageUrl);
+        //si la transaccion no tiene locacion, se saltará a la siguiente iteracion
+        if(!transaction.hasLocation()) continue;
 
         let markerLocation : GoogleMapsLatLng = new GoogleMapsLatLng(transaction.lat,transaction.lng);
+
         let markerOptions : GoogleMapsMarkerOptions = {
           position: markerLocation,
           title: transaction.title,
-          icon: "blue"
+          icon: transaction.getImage()
         }
 
         this.map.addMarker(markerOptions).then((marker : GoogleMapsMarker)=>{
