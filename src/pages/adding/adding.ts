@@ -20,6 +20,7 @@ export class AddingPage {
   model : Transaction = new Transaction(null,"");
   shouldGeolocate : boolean = true;
   shouldSend : boolean = true;
+  imageData: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public geolocator : GeolocationService) {}
 
@@ -39,7 +40,9 @@ export class AddingPage {
       saveToPhotoAlbum: false
     };
     Camera.getPicture(cameraOptions).then((imageData) => {
-      alert(imageData);
+      //imagen pero en base 64
+      let base64Image = 'data:image/jpeg;base64,'+imageData;
+      this.imageData = base64Image;
     }).catch(err => console.log(err));
   }
 
