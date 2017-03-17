@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Transaction } from '../../database';
 import {GeolocationService} from '../../services/geolocation.service';
+import { Camera,CameraOptions} from 'ionic-native';
 
 
 /*
@@ -29,7 +30,17 @@ export class AddingPage {
   }
 
   getPhoto(){
-    console.log("Tomar una foto");
+    let cameraOptions : CameraOptions = {
+      quality:80,
+      destinationType:Camera.DestinationType.DATA_URL,
+      sourceType: Camera.PictureSourceType.CAMERA,
+      allowEdit: false,
+      encodingType: Camera.EncodingType.JPEG,
+      saveToPhotoAlbum: false
+    };
+    Camera.getPicture(cameraOptions).then((imageData) => {
+      alert(imageData);
+    }).catch(err => console.log(err));
   }
 
   save()
