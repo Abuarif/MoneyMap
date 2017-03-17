@@ -32,17 +32,21 @@ export class AddingPage {
 
   getPhoto(){
     let cameraOptions : CameraOptions = {
-      quality:80,
+      quality:20,
       destinationType:Camera.DestinationType.DATA_URL,
       sourceType: Camera.PictureSourceType.CAMERA,
       allowEdit: false,
       encodingType: Camera.EncodingType.JPEG,
-      saveToPhotoAlbum: false
+      saveToPhotoAlbum: false,
+      targetWidth: 100,
+      targetHeight: 100
     };
     Camera.getPicture(cameraOptions).then((imageData) => {
       //imagen pero en base 64
       let base64Image = 'data:image/jpeg;base64,'+imageData;
       this.imageData = base64Image;
+      //se guardará con el prefijo de image64 para no tener que ponerlo otra vez
+      this.model.imageUrl= this.imageData;
     }).catch(err => console.log(err));
   }
 

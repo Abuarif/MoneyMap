@@ -36,6 +36,9 @@ export class MapPage {
   loadTransactionMarkers(transactions){
     for (let i = 0; i < transactions.length; i++) {
         let transaction=transactions[i];
+
+        alert(transaction.imageUrl);
+
         let markerLocation : GoogleMapsLatLng = new GoogleMapsLatLng(transaction.lat,transaction.lng);
         let markerOptions : GoogleMapsMarkerOptions = {
           position: markerLocation,
