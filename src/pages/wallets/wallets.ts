@@ -3,6 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { Wallet,IWallet} from '../../database';
 import {NewWalletPage} from '../new-wallet/new-wallet';
 import {WalletService} from '../../services/wallets.service';
+import {Toast} from 'ionic-native';
 
 /*
   Generated class for the Wallets page.
@@ -32,8 +33,12 @@ export class WalletsPage {
   }
 
   delete(wallet : Wallet){
-    //eliminar cartera
-
+    //validar que queda alguna cartera
+    if(this.wallets.length == 1)
+      return this.showToast("Tienes que conservar al menos una cartera","bottom");
+    //validar que no es cartera principal
+    if(this.walletService.getID() == wallet.id)
+      return this.showToast("No puedes eliminar cartera seleccionada","bottom");
     //eliminar de interfaz
     this.wallets = this.wallets.filter(w=>{
       //cualquier elemento que sea falso se guardará
@@ -41,6 +46,11 @@ export class WalletsPage {
     });
     //eliminar de la base de datos
     wallet.destroy();
+    return this.showToast("Cartera eliminada","bottom");
+  }
+
+  showToast(message, position : string ){
+    Toast.show(message,"short",position).subscribe(console.log);
   }
 
 }
