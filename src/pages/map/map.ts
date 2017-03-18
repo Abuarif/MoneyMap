@@ -29,6 +29,8 @@ export class MapPage {
       //cargar mapa
       this.loadMap(result.coords.latitude, result.coords.longitude);
     }).catch((err)=>console.log(err));
+    //limpiar marcadores del mapa
+    this.clearMap();
   }
 
   loadMarkers(){
@@ -80,8 +82,11 @@ export class MapPage {
         'bearing':50
       }
     });
-
     this.map.on(GoogleMapsEvent.MAP_READY).subscribe(()=>this.loadMarkers());
+  }
+
+  clearMap(){
+    this.map.clear();
   }
 
 }
