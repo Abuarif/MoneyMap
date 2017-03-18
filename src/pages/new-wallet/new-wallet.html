@@ -7,12 +7,22 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>newWallet</ion-title>
+    <ion-title>Nueva Cartera</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
+  <ion-item>
+    <ion-label floating>Nombre</ion-label>
+    <ion-input type="text" [(ngModel)]="model.name"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>Monto inicial</ion-label>
+    <ion-input type="text" [(ngModel)]="model.amount"></ion-input>
+  </ion-item>
+  <div class="actions">
+    <button ion-button (tap)="save()">Agregar</button>
+  </div>
 </ion-content>

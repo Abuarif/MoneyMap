@@ -20,7 +20,7 @@ export class WalletsPage {
   addingPage = NewWalletPage;
   constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
-  ionViewDidEnter() {
+  ionViewWillEnter() {
     Wallet.all().then(results => this.wallets = results);
   }
 

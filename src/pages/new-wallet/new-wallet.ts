@@ -1,22 +1,25 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import {Wallet} from '../../database';
 
-/*
-  Generated class for the NewWallet page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   selector: 'page-new-wallet',
   templateUrl: 'new-wallet.html'
 })
 export class NewWalletPage {
 
+  model : Wallet = new Wallet(null,"");
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad NewWalletPage');
+  }
+
+  save(){
+    this.model.save().then(()=>{
+      this.navCtrl.pop();
+    });
   }
 
 }
