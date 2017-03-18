@@ -61,6 +61,12 @@ export class Wallet implements IWallet{
     return db.wallets.add(this);
   }
 
+  destroy(){
+    // se envia el id del elemento que queremos borrar
+    return db.wallets.delete(this.id);
+    //retorna una promesa
+  }
+
   static createFirst(){
     let wallet = new Wallet(0,"Primera Cartera");
     return wallet.save();

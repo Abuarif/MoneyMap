@@ -39,6 +39,7 @@ export class MapPage {
   }
 
   loadTransactionMarkers(transactions){
+    //limpiar marcadores antes de volverlos a poner
     for (let i = 0; i < transactions.length; i++) {
         let transaction=transactions[i];
 

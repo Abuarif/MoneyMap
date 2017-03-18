@@ -31,4 +31,16 @@ export class WalletsPage {
     this.walletService.setID(wallet.id);
   }
 
+  delete(wallet : Wallet){
+    //eliminar cartera
+
+    //eliminar de interfaz
+    this.wallets = this.wallets.filter(w=>{
+      //cualquier elemento que sea falso se guardará
+      return w.id != wallet.id;
+    });
+    //eliminar de la base de datos
+    wallet.destroy();
+  }
+
 }
