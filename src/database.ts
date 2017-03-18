@@ -54,6 +54,17 @@ export class Wallet implements IWallet{
   {
     return db.wallets.add(this);
   }
+
+  static createFirst(){
+    let wallet = new Wallet(0,"Primera Cartera");
+    return wallet.save();
+  }
+
+  static all(){
+    //Transaction.all() => todas las transacciones
+    //retorna objeto tipo Promise
+    return db.wallets.orderBy("id").toArray();
+  }
 }
 
 export class Transaction implements ITransaction{
@@ -106,3 +117,4 @@ export class Transaction implements ITransaction{
 }
 
 export let db = new TransactionAppDB();
+//Wallet.createFirst();

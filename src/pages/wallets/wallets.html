@@ -17,12 +17,12 @@
   <ion-list>
     <ion-list-header>Mis carteras</ion-list-header>
     <!--*ngFor="let wallet of wallets"-->
-    <ion-item>
+    <ion-item *ngFor="let wallet of wallets">
       <ion-avatar item-left>
         <img src="assets/imgs/wallet.png">
       </ion-avatar>
-      <h2>Principal</h2>
-      <h3>15000</h3>
+      <h2>{{wallet.name}}</h2>
+      <h3>{{wallet.amount}}</h3>
       <p>
         <button ion-button clear>Seleccionar</button>
         <button ion-button color="danger">Eliminar</button>
