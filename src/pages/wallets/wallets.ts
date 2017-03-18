@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Wallet,IWallet} from '../../database';
+import {NewWalletPage} from '../new-wallet/new-wallet';
 
 /*
   Generated class for the Wallets page.
@@ -15,6 +16,8 @@ import { Wallet,IWallet} from '../../database';
 export class WalletsPage {
 
   wallets : IWallet[];
+  //Se ingresa automaticamente a la pagina cuando pones la propiedad con navPush
+  addingPage = NewWalletPage;
   constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
   ionViewDidEnter() {
