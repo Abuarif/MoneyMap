@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Wallet,IWallet} from '../../database';
 import {NewWalletPage} from '../new-wallet/new-wallet';
+import {WalletService} from '../../services/wallets.service';
 
 /*
   Generated class for the Wallets page.
@@ -18,10 +19,19 @@ export class WalletsPage {
   wallets : IWallet[];
   //Se ingresa automaticamente a la pagina cuando pones la propiedad con navPush
   addingPage = NewWalletPage;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              private walletService : WalletService) {}
 
   ionViewWillEnter() {
+
+    console.log(this.walletService.getID());
+
     Wallet.all().then(results => this.wallets = results);
+  }
+
+  set(wallet : Wallet){
+    this.walletService.setID(wallet.id);
   }
 
 }

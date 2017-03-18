@@ -30,8 +30,9 @@ export class TransactionsPage {
   ionViewWillEnter() {
     //let transaction = new Transaction(20,"Primera Transaccion");
     //transaction.save();
-    this.walletService.validateFirstWallet();
-    console.log(this.walletService.getID());
+    if(this.walletService.empty()){
+      this.walletService.validateFirstWallet();
+    }
     this.loadTransactions();
   }
 
