@@ -5,6 +5,7 @@ import {Transaction} from '../../database';
 
 import {AddingPage} from '../adding/adding';
 import {WalletService} from '../../services/wallets.service';
+import {TransactionService} from '../../services/transactions.service';
 
 /*
   Generated class for the Transactions page.
@@ -23,7 +24,8 @@ export class TransactionsPage {
   addingPage = AddingPage;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-              private walletService : WalletService) {}
+              private walletService : WalletService,
+              private transactionService : TransactionService) {}
 
   ionViewWillEnter() {
     //let transaction = new Transaction(20,"Primera Transaccion");
@@ -34,7 +36,7 @@ export class TransactionsPage {
   }
 
   loadTransactions(){
-    Transaction.all()
+    this.transactionService.all()
                .then((resultados) => {
                  this.transactions = resultados;
                  //console.log(this.transactions);

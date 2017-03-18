@@ -3,6 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { GoogleMap, GoogleMapsEvent, GoogleMapsLatLng, GoogleMapsMarkerOptions, GoogleMapsMarker } from 'ionic-native';
 import {GeolocationService} from '../../services/geolocation.service';
 import { Transaction } from '../../database';
+import {TransactionService} from '../../services/transactions.service';
 
 /*
   Generated class for the Map page.
@@ -19,7 +20,8 @@ export class MapPage {
   map : GoogleMap = null;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-              public geolocator : GeolocationService) {}
+              public geolocator : GeolocationService,
+              private transactionService : TransactionService) {}
 
   ionViewDidEnter() {
     //obtener ubicacion del usuario para centrar mapa
@@ -30,7 +32,8 @@ export class MapPage {
   }
 
   loadMarkers(){
-    Transaction.all().then((results) => this.loadTransactionMarkers(results));
+    this.transactionService.all()
+    .then((results) => this.loadTransactionMarkers(results));
   }
 
   loadTransactionMarkers(transactions){

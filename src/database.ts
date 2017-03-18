@@ -122,10 +122,14 @@ export class Transaction implements ITransaction{
       this.lng=null;
     }
 
-    static all(){
+    static all(walletID){
       //Transaction.all() => todas las transacciones
       //retorna objeto tipo Promise
-      return db.transactions.orderBy("id").reverse().toArray();
+      return db.transactions
+                .where("walletId")
+                .equals(walletID)
+                .reverse()
+                .toArray();
     }
 }
 
