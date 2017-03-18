@@ -24,9 +24,6 @@ export class WalletsPage {
               private walletService : WalletService) {}
 
   ionViewWillEnter() {
-
-    console.log(this.walletService.getID());
-
     Wallet.all().then(results => this.wallets = results);
   }
 

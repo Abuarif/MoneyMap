@@ -16,8 +16,9 @@
 <ion-content>
   <ion-list>
     <ion-list-header>Mis carteras</ion-list-header>
-    <!--*ngFor="let wallet of wallets"-->
-    <ion-item *ngFor="let wallet of wallets">
+
+    <ion-item *ngFor="let wallet of wallets"
+    [ngClass]="{'green': (wallet.id == walletService.getID())}">
       <ion-avatar item-left>
         <img src="assets/imgs/wallet.png">
       </ion-avatar>
@@ -27,6 +28,7 @@
         <button ion-button clear (tap)="set(wallet)">Seleccionar</  button>
         <button ion-button color="danger">Eliminar</button>
       </p>
+
     </ion-item>
   </ion-list>
 
