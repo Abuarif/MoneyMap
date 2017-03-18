@@ -11,8 +11,13 @@ export class TransactionAppDB extends Dexie{
       transactions: '++id,amount,lat,lng,title,imageUrl'
     });
     //cada vez que se haga un cambio se tiene que agregar otra version
+    //si un usuario no actualiza la app y tien version borrada, no podrá actualizar
     this.version(2).stores({
       transactions: '++id,amount,lat,lng,title,imageUrl',
+      wallets: '++id,amount,name'
+    });
+    this.version(3).stores({
+      transactions: '++id,amount,lat,lng,title,imageUrl,walletId',
       wallets: '++id,amount,name'
     });
 
@@ -31,6 +36,7 @@ export interface ITransaction{
   lng:number;
   title:string;
   imageUrl: string;
+  walletId : number;
 }
 
 export interface IWallet{
@@ -79,15 +85,17 @@ export class Transaction implements ITransaction{
   lng:number;
   title:string;
   imageUrl: string;
+  walletId : number;
 
-  constructor(amount: number, title: string, lat?:number, lng?:number,
-              id?:number, imageUrl?:string){
+  constructor(amount: number, title: string,lat?:number, lng?:number,
+              id?:number,imageUrl?:string, walletId ?: number){
     this.amount = amount;
     this.title=title;
     if(lat) this.lat=lat;
     if(lng) this.lng=lng;
     if(imageUrl) this.imageUrl=imageUrl;
     if(id) this.id=id;
+    if(walletId) this.walletId=walletId;
       }
 
     getImage():string{
