@@ -17,7 +17,7 @@ export class WalletsPage {
   wallets : IWallet[];
   constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
-  ionViewDidLoad() {
+  ionViewDidEnter() {
     Wallet.all().then(results => this.wallets = results);
   }
 

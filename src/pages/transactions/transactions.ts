@@ -4,6 +4,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import {Transaction} from '../../database';
 
 import {AddingPage} from '../adding/adding';
+import {WalletService} from '../../services/wallets.service';
 
 /*
   Generated class for the Transactions page.
@@ -21,11 +22,13 @@ export class TransactionsPage {
   transactions : any;
   addingPage = AddingPage;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+              private walletService : WalletService) {}
 
   ionViewWillEnter() {
     //let transaction = new Transaction(20,"Primera Transaccion");
     //transaction.save();
+    this.walletService.validateFirstWallet();
     this.loadTransactions();
   }
 

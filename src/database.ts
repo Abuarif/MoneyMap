@@ -65,6 +65,11 @@ export class Wallet implements IWallet{
     //retorna objeto tipo Promise
     return db.wallets.orderBy("id").toArray();
   }
+
+  static first(){
+    //retorna nulo si no hay nada
+    return db.wallets.orderBy("id").limit(1).first();
+  }
 }
 
 export class Transaction implements ITransaction{

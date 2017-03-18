@@ -10,6 +10,7 @@ import { AddingPage } from '../pages/adding/adding';
 import { MapPage } from '../pages/map/map';
 import {GeolocationService} from '../services/geolocation.service';
 import {WalletsPage} from '../pages/wallets/wallets';
+import {WalletService} from '../services/wallets.service';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,8 @@ import {WalletsPage} from '../pages/wallets/wallets';
     MapPage,
     WalletsPage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},{provide: GeolocationService, useClass: GeolocationService}]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},
+              {provide: GeolocationService, useClass: GeolocationService},
+              {provide: WalletService, useClass: WalletService}]
 })
 export class AppModule {}
