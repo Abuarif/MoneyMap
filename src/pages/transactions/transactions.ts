@@ -29,6 +29,7 @@ export class TransactionsPage {
     //let transaction = new Transaction(20,"Primera Transaccion");
     //transaction.save();
     this.walletService.validateFirstWallet();
+    console.log(this.walletService.getID());
     this.loadTransactions();
   }
 

@@ -1,7 +1,21 @@
 import {Injectable} from '@angular/core';
 import {Wallet} from '../database';
+
+//esta variable no puede cambiar su valor
+export const StorageKey = "walletID";
+
+
 @Injectable()
 export class WalletService{
+
+  setID(walletID){
+    localStorage.setItem(StorageKey,walletID)
+  }
+  getID() : string{
+    return localStorage.getItem(StorageKey);
+  }
+
+
   validateFirstWallet(){
     //promesa que nosotros retornamos
     return new Promise((resolve,reject)=>{
@@ -13,10 +27,12 @@ export class WalletService{
           Wallet.createFirst().then((resultado)=>{
             //Se crea primera cartera
             console.log("Se creo primera cartera");
+            this.setID(resultado);
             resolve();
           });
         }else{
           console.log("Ya había cartera");
+          this.setID(wallet.id);
           resolve();
         }
       });
