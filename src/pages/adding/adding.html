@@ -15,7 +15,7 @@
 
 <ion-content padding>
   <div class="red amount-field" [ngClass]="{'green' : income}">
-    <input type="number" name="model.amount" autofocus="true" placeholder="0">
+    <input type="number" [(ngModel)]="model.amount" autofocus="true" placeholder="0">
   </div>
   <ion-item>
     <ion-label floating>Descripción</ion-label>

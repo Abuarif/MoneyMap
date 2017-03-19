@@ -60,12 +60,20 @@ export class AddingPage {
   save()
   {
     if(this.shouldSend){
-
+      this.model.amount=this.convertAmountToInt();
       this.transactionService.save(this.model).then(result =>{
         this.model = this.cleanTransaction();
         this.navCtrl.pop();
       });
     }
+  }
+
+  convertAmountToInt(){
+    //transformarlo a string otra vez para parsearlo, porque typescript lo toma como int
+    //siendo que el imput lo manda como cadena :/
+    let amount = parseInt(this.model.amount+"");
+    if(!this.income) amount = amount * -1;
+    return amount;
   }
 
   cleanTransaction(): Transaction{
