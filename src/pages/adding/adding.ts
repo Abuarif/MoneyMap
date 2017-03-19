@@ -23,6 +23,7 @@ export class AddingPage {
   shouldGeolocate : boolean = true;
   shouldSend : boolean = true;
   imageData: string;
+  income : boolean = false;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public geolocator : GeolocationService,

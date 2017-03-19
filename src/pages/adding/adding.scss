@@ -6,4 +6,39 @@ page-adding {
     margin-left: 1em;
     margin-top: 1em;
   }
+  .red{
+    background-color: #ff1744;
+  }
+  .amount-field{
+    padding: 2em;
+    input{
+      font-size: 2em;
+      background-color: transparent;
+      border: none;
+      outline: none;
+      color: white;
+    }
+
+    ::-webkit-input-placeholder{ /*Webkit, Blink, Edge*/
+      color: #eee;
+    }
+    :-moz-placeholder{ /*Mozilla firefox 4 to 18*/
+      color: #eee;
+      opacity: 1;
+    }
+    ::-moz-placeholder{ /*Mozilla Firefox 19+*/
+      color: #eee;
+      opacity: 1;
+    }
+    :ms-input-placeholder{ /*Internet Explorer 10-11*/
+      color: #eee;
+    }
+
+    transition: all 0.4s;
+
+
+  }
+  .green{
+    background-color: #00e676;
+  }
 }
