@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
-import {Transaction} from '../../database';
+import {Transaction, IWallet} from '../../database';
 
 import {AddingPage} from '../adding/adding';
 import {WalletService} from '../../services/wallets.service';
@@ -22,6 +22,7 @@ export class TransactionsPage {
   title : String = "Movimientos";
   transactions : any;
   addingPage = AddingPage;
+  wallet : IWallet = {amount:0, name:""};
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
               private walletService : WalletService,
@@ -33,7 +34,17 @@ export class TransactionsPage {
     if(this.walletService.empty()){
       this.walletService.validateFirstWallet();
     }
+
+    //cargar transacciones
     this.loadTransactions();
+    //cargar monto de cartera
+    this.loadWallet();
+  }
+
+  loadWallet(){
+    this.walletService.getMainWallet().then(wallet=>{
+      this.wallet = wallet;
+    });
   }
 
   loadTransactions(){

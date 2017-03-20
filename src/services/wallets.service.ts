@@ -15,13 +15,17 @@ export class WalletService{
     return parseInt(localStorage.getItem(StorageKey));
   }
 
+  getMainWallet():any{
+    return Wallet.find(this.getID());
+  }
+
   empty():boolean{
     //si no hay cartera seleccionada no hay ninguna
     return !localStorage.getItem(StorageKey);
   }
 
   update(amount:number){
-      let findPromise = Wallet.find(this.getID());
+      let findPromise = this.getMainWallet();
 
       let updatePromise = findPromise.then(wallet=>{
         Wallet.update(this.getID(),(+wallet.amount) + (+amount))

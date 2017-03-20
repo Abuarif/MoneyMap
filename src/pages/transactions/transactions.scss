@@ -1,3 +1,22 @@
 page-transactions   {
-  
+  .monto{
+    padding: 1em;
+    text-align: center;
+    background-color: #3f51b5;
+    p{
+      color:white !important;
+      font-size: 36px;
+      margin: 0px;
+    }
+    ion-card-header{
+      padding: 0px;
+      color: white !important;
+      font-size: 12px;
+    }
+  }
+  .bold{
+    font-weight: bold;
+    font-size: 2em;
+    background-color: #eee;
+  }
 }

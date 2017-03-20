@@ -14,9 +14,12 @@
 
 
 <ion-content padding>
-  <h2>Bienvenido 😸  </h2>
+  <ion-card class="monto">
+    <ion-card-header>{{wallet.name}}</ion-card-header>
+    <p>{{wallet.amount}}</p>
+  </ion-card>
   <ion-card>
-    <ion-card-header>Movimientos</ion-card-header>
+    <ion-card-header class="bold">Movimientos 😏</ion-card-header>
     <ion-list *ngFor="let transaction of transactions">
       <button ion-item>
         <strong>{{transaction.amount}}</strong>
