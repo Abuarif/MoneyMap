@@ -82,6 +82,18 @@ export class Wallet implements IWallet{
     //retorna nulo si no hay nada
     return db.wallets.orderBy("id").limit(1).first();
   }
+
+  static update(id, newAmount : number){
+    //esto tambien retorna promesa
+    return db.wallets.update(id,{
+      amount:newAmount
+    });
+  }
+
+  static find(id:number){
+    //el resultado de esto es una promesa
+    return db.wallets.get(id);
+  }
 }
 
 export class Transaction implements ITransaction{

@@ -13,6 +13,10 @@ export class TransactionService{
   save(transaction:Transaction):any{
     let transactonSavePromise = transaction.save();
 
-    return transactonSavePromise;
+    let walletUpdatePromise = this.walletService.update(transaction.amount);
+
+    return Promise.all([transactonSavePromise,walletUpdatePromise]);
   }
+
+
 }
