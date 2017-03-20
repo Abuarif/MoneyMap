@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "505272632607",
+    "firebase_url": "https://moneymap-8b7a6.firebaseio.com",
+    "project_id": "moneymap-8b7a6",
+    "storage_bucket": "moneymap-8b7a6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:505272632607:android:5458dfc7b9070532",
+        "android_client_info": {
+          "package_name": "com.asder707.moneymap"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "505272632607-2gq7p1rae7588l751v875m876i7pd5pt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDH-WpFG5hGwRt41uflD2ebEfp9T3RgvdI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
